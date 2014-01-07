@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# a script to execute a command at a specific time
+time1=$(date +%s --date $1)
+while :
+do
+	time2=$(date +%s)
+	#if the time is greater or equal to the selected timestamp 
+	#execute and exit the script
+	if [ "$time2" -ge "$time1" ] ; 
+	then
+		$2
+		exit
+	fi
+	#else sleep for a minute
+	sleep 60
+done
+
